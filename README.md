@@ -2,15 +2,24 @@
 
 >Disclaimer: This cheatsheet is summarized from personal experience and other online tutorials. It should not be considered as an official advice.
 
+## Command Line
+
+```bash
+vim -p file1 file2  # open files in tabs
+vim +{commanmd}     # open vim and run command
+```
+
 ## Global
+
 ```bash
 :help keyword # open help for keyword
-:o file       # open file
+:o[pen] file  # open file
 :saveas file  # save file as
 :close        # close current pane
 ```
 
 ## Cursor movement
+
 ```bash
 h        # move cursor left
 j        # move cursor down
@@ -37,13 +46,14 @@ tx       # jump to before next occurrence of character x
 }        # jump to next paragraph (or function/block, when editing code)
 {        # jump to previous paragraph (or function/block, when editing code)
 zz       # center cursor on screen
-Ctrl + b # move back one full screen
-Ctrl + f # move forward one full screen
-Ctrl + d # move forward 1/2 a screen
-Ctrl + u # move back 1/2 a screen
+^b # move back one full screen
+^f # move forward one full screen
+^d # move forward 1/2 a screen
+^u # move back 1/2 a screen
 ```
 
 ## Insert mode - inserting/appending text
+
 ```bash
 i        # insert before the cursor
 I        # insert at the beginning of the line
@@ -56,6 +66,7 @@ Esc      # exit insert mode
 ```
 
 ## Editing
+
 ```bash
 r        # replace a single character
 J        # join line below to the current one
@@ -70,13 +81,17 @@ S        # delete line and substitute text (same as cc)
 xp       # transpose two letters (delete and paste)
 .        # repeat last command
 u        # undo
-Ctrl + r # redo
+{n}u     # undo up to the {n}th change
+U        # undo latest changes to single line
+^r # redo
 ```
 
 ## Marking text (visual mode)
+
 ```bash
 v        # start visual mode, mark lines, then do a command (like y-yank)
 V        # start linewise visual mode
+^V       # start blockwise visual mode
 o        # move to other end of marked area
 O        # move to other corner of block
 aw       # mark a word
@@ -85,10 +100,11 @@ aB       # a block with {}
 ib       # inner block with ()
 iB       # inner block with {}
 Esc      # exit visual mode
-Ctrl + v # start visual block mode
+^v # start visual block mode
 ```
 
 ## Visual commands
+
 ```bash
 >       # shift text right
 <       # shift text left
@@ -97,7 +113,8 @@ d       # delete marked text
 ~       # switch case
 ```
 
-## Cut and paste
+## Cut, copy and paste
+
 ```bash
 yy       # yank (copy) a line
 2yy      # yank (copy) 2 lines
@@ -116,6 +133,7 @@ x        # delete (cut) character
 ```
 
 ## Search and replace
+
 ```bash
 /pattern       # search for pattern
 ?pattern       # search backward for pattern
@@ -128,6 +146,7 @@ N              # repeat search in opposite direction
 ```
 
 ## Search in multiple files
+
 ```bash
 :vimgrep /pattern/ {file} # search for pattern in multiple files
 :cn                       # jump to the next match
@@ -136,6 +155,7 @@ N              # repeat search in opposite direction
 ```
 
 ## Exiting
+
 ```bash
 :w              # write (save) the file, but don't exit
 :w !sudo tee %  # write out the current file using sudo
@@ -145,32 +165,44 @@ N              # repeat search in opposite direction
 ```
 
 ## Working with multiple files
+
 ```bash
-:e file       # edit a file in a new buffer
-:bnext or :bn # go to the next buffer
-:bprev or :bp # go to the previous buffer
+:e[dit] file  # edit a file in a new buffer
+:bn[ext]      # go to the next buffer
+:bp[rev]      # go to the previous buffer
 :bd           # delete a buffer (close a file)
 :ls           # list all open buffers
-:sp file      # open a file in a new buffer and split window
-:vsp file     # open a file in a new buffer and vertically split window
-Ctrl + ws     # split window
-Ctrl + ww     # switch windows
-Ctrl + wq     # quit a window
-Ctrl + wv     # split window vertically
-Ctrl + wh     # move cursor to the left window (vertical split)
-Ctrl + wl     # move cursor to the right window (vertical split)
-Ctrl + wj     # move cursor to the window below (horizontal split)
-Ctrl + wk     # move cursor to the window above (horizontal split)
+:sp[lit] file # open a file in a new buffer and split window
+:vsp[lit] file # open a file in a new buffer and vertically split window
+^ws           # split window
+^ww           # switch windows
+^wq           # quit a window
+^wv           # split window vertically
+^wh           # move cursor to the left window (vertical split)
+^wl           # move cursor to the right window (vertical split)
+^wj           # move cursor to the window below (horizontal split)
+^wk           # move cursor to the window above (horizontal split)
 ```
 
+## Windows
+
+```bash
+:res[ize] [+-]{n}           # resize window by {n} lines horizontally
+:vertical resize [+-]{n}    # resize window by {n} lines vertically
+:z{n}                       # set current window height to {n}
+^W=                         # make all windows (almost) equally high and wide
+^W-                         # decrease current window height by 1
+^W+                         # increase current window height by 1
+```
 ## Tabs
+
 ```bash
 :tabnew or :tabnew file # open a file in a new tab
-Ctrl + wT               # move the current split window into its own tab
+^wT               # move the current split window into its own tab
 gt or :tabnext or :tabn # move to the next tab
 gT or :tabprev or :tabp # move to the previous tab
-<number>gt              # move to tab <number>
-:tabmove <number>       # move current tab to the <number>th position (indexed from 0)
+{n}gt                   # move to tab {n}
+:tabmove {n}            # move current tab to the {n}th position (indexed from 0)
 :tabclose or :tabc      # close the current tab and all its windows
 :tabonly or :tabo       # close all tabs except for the current one
 :tabdo command          # run the command on all tabs (e.g. :tabdo q - closes all opened tabs)
