@@ -5,8 +5,9 @@
 ## Command Line
 
 ```bash
-vim -p file1 file2  # open files in tabs
-vim +{commanmd}     # open vim and run command
+vim -p file1 file2              # open files in tabs
+vim +{commanmd1} +{command2}    # open vim and run command (e.g. +PlugInstall +q!)
+vimn
 ```
 
 ## Global
@@ -55,14 +56,15 @@ zz       # center cursor on screen
 ## Insert mode - inserting/appending text
 
 ```bash
-i        # insert before the cursor
-I        # insert at the beginning of the line
-a        # insert (append) after the cursor
-A        # insert (append) at the end of the line
-o        # append (open) a new line below the current line
-O        # append (open) a new line above the current line
-ea       # insert (append) at the end of the word
-Esc      # exit insert mode
+i           # insert before the cursor
+I           # insert at the beginning of the line
+a           # insert (append) after the cursor
+A           # insert (append) at the end of the line
+o           # append (open) a new line below the current line
+O           # append (open) a new line above the current line
+ea          # insert (append) at the end of the word
+Esc         # exit insert mode
+^v u{nnnn}  # insert unicode character 
 ```
 
 ## Editing
